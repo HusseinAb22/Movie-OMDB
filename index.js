@@ -1,6 +1,3 @@
-// Titles: https://omdbapi.com/?s=thor&page=1&apikey=545f9db1
-// details: http://www.omdbapi.com/?i=tt3896198&apikey=545f9db1
-
 const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
@@ -180,12 +177,19 @@ async function displayMovieDetails(details) {
 
 // Add this new function to load default movies
 async function loadDefaultMovies() {
-    const URLs = [
-        `https://omdbapi.com/?s=movie&type=movie&y=2024&plot=full&apikey=545f9db1`,
-        `https://omdbapi.com/?s=avengers&type=movie&y=2024&plot=full&apikey=545f9db1`,
-        `https://omdbapi.com/?s=action&type=movie&y=2024&plot=full&apikey=545f9db1`
+    const mainstreamKeywords = [
+        'avengers', 'spider', 'batman', 'superman', 'marvel', 'dc', 
+        'jurassic', 'fast', 'furious', 'transformers', 'matrix', 
+        'john wick', 'movie'
     ];
-    
+
+    // Generate URLs dynamically for each keyword and year
+    const URLs = mainstreamKeywords.flatMap(keyword => [
+        `https://omdbapi.com/?s=${keyword}&type=movie&y=2024&plot=full&apikey=545f9db1`,
+        `https://omdbapi.com/?s=${keyword}&type=movie&y=2023&plot=full&apikey=545f9db1`,
+        `https://omdbapi.com/?s=${keyword}&type=movie&y=2022&plot=full&apikey=545f9db1`
+    ]);
+
     const suggestedMoviesGrid = document.createElement('div');
     suggestedMoviesGrid.className = 'suggested-movies-grid';
     
@@ -198,18 +202,19 @@ async function loadDefaultMovies() {
     resultGrid.appendChild(suggestedMoviesGrid);
 
     try {
+        // Fetch data from all URLs
         const responses = await Promise.all(URLs.map(url => fetch(url)));
         const data = await Promise.all(responses.map(res => res.json()));
         const allMovies = data.flatMap(d => d.Search || []);
-        
+
         // Filter movies and remove duplicates
         const uniqueMovies = [...new Map(allMovies
             .filter(movie => 
                 movie.Type === 'movie' && 
                 !movie.Title.toLowerCase().includes('awards') &&
                 !movie.Title.toLowerCase().includes('ceremony') &&
-                !movie.Title.toLowerCase().includes('election')&&
-                !movie.Title.toLowerCase().includes('nominated')&&
+                !movie.Title.toLowerCase().includes('election') &&
+                !movie.Title.toLowerCase().includes('nominated') &&
                 !movie.Title.toLowerCase().includes('winner')
             )
             .map(movie => [movie.imdbID, movie]))
@@ -223,7 +228,7 @@ async function loadDefaultMovies() {
         });
 
         const moviesWithDetails = await Promise.all(movieDetailsPromises);
-        
+
         // Filter, sort by rating, and take top 12
         const sortedMovies = moviesWithDetails
             .filter(details => details.Type === 'movie' && details.imdbRating && parseFloat(details.imdbRating) > 5)
@@ -261,6 +266,7 @@ async function loadDefaultMovies() {
         console.error('Error loading movies:', error);
     }
 }
+
 
 // Add home icon click handler
 document.addEventListener('DOMContentLoaded', () => {
@@ -403,6 +409,9 @@ function addToFavorites(movie) {
     if (!favorites.some(fav => fav.imdbID === movie.imdbID)) {
         favorites.push(movie);
         localStorage.setItem('movieFavorites', JSON.stringify(favorites));
+        
+        // SweetAlert notification
+        swal("Added to Favorites!", `${movie.Title} has been added to your favorites.`, "success");
     }
 }
 
@@ -410,6 +419,9 @@ function removeFromFavorites(movieId) {
     let favorites = JSON.parse(localStorage.getItem('movieFavorites')) || [];
     favorites = favorites.filter(movie => movie.imdbID !== movieId);
     localStorage.setItem('movieFavorites', JSON.stringify(favorites));
+    
+    // SweetAlert notification
+    swal("Removed from Favorites!", "The movie has been removed from your favorites.", "error");
 }
 
 function isFavorite(movieId) {
