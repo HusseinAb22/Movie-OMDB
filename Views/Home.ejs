@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        body {
+            font-family: 'Roboto', 'Arial', sans-serif;
+            background-image: url("Cinema.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #343a40;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        
+        div{
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+        }
+        div ul li{
+            margin: 10px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+
+        ul{
+            list-style-type: none;
+            padding: 0;
+        }
+
+    </Style>
+</head>
+<body>
+    <%- include("./partials/nav.ejs") %>
+        <div>
+        <ul>
+            <li>Name: Hussein Abbas</li>
+            <li>ID: 211400833</li>
+            <li>Name: Sre Knaaneh</li>
+            <li>ID: 324938141</li>
+        </ul>
+    </div>
+</body>
+</html>

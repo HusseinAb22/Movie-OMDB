@@ -1,10 +1,10 @@
 const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
-
+const API='2ad6e27a';//"${API}"
 // load movies from API
 async function loadMovies(searchTerm){
-    const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=545f9db1`;
+    const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=${API}`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     // console.log(data.Search);
@@ -185,9 +185,9 @@ async function loadDefaultMovies() {
 
     // Generate URLs dynamically for each keyword and year
     const URLs = mainstreamKeywords.flatMap(keyword => [
-        `https://omdbapi.com/?s=${keyword}&type=movie&y=2024&plot=full&apikey=545f9db1`,
-        `https://omdbapi.com/?s=${keyword}&type=movie&y=2023&plot=full&apikey=545f9db1`,
-        `https://omdbapi.com/?s=${keyword}&type=movie&y=2022&plot=full&apikey=545f9db1`
+        `https://omdbapi.com/?s=${keyword}&type=movie&y=2024&plot=full&apikey=${API}`,
+        `https://omdbapi.com/?s=${keyword}&type=movie&y=2023&plot=full&apikey=${API}`,
+        `https://omdbapi.com/?s=${keyword}&type=movie&y=2022&plot=full&apikey=${API}`
     ]);
 
     const suggestedMoviesGrid = document.createElement('div');
@@ -222,7 +222,7 @@ async function loadDefaultMovies() {
 
         // Get detailed info for all movies including ratings
         const movieDetailsPromises = uniqueMovies.map(async (movie) => {
-            const detailsURL = `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=545f9db1`;
+            const detailsURL = `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${API}`;
             const detailsRes = await fetch(detailsURL);
             return await detailsRes.json();
         });
@@ -305,11 +305,11 @@ async function displaySearchResults(searchTerm) {
     
     try {
         // First get exact title matches
-        const exactMatchResponse = await fetch(`https://omdbapi.com/?t=${searchTerm}&type=movie&apikey=545f9db1`);
+        const exactMatchResponse = await fetch(`https://omdbapi.com/?t=${searchTerm}&type=movie&apikey=${API}`);
         const exactMatch = await exactMatchResponse.json();
         
         // Then get similar titles
-        const similarResponse = await fetch(`https://omdbapi.com/?s=${searchTerm}&type=movie&apikey=545f9db1`);
+        const similarResponse = await fetch(`https://omdbapi.com/?s=${searchTerm}&type=movie&apikey=${API}`);
         const similarData = await similarResponse.json();
         
         let allMovies = [];
@@ -329,7 +329,7 @@ async function displaySearchResults(searchTerm) {
             
             // Get detailed info for similar movies
             const detailsPromises = similarMovies.map(async (movie) => {
-                const detailsRes = await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=545f9db1`);
+                const detailsRes = await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${API}`);
                 return await detailsRes.json();
             });
             

@@ -749,7 +749,18 @@ img{
     margin-right: 10px;
     color: var(--c-blue-color);
 }
-
+.fa-sign-out-alt {
+    margin-right: 10px;
+    color: var(--c-blue-color);
+}
+.logout-link{
+    position: absolute;
+    right: 10px; /* Adjust for desired spacing from the right edge */
+    
+    transform: translateY(-50%); /* Adjust for exact vertical centering */
+    color: #fff;
+ cursor: pointer;
+}
 @media(max-width: 768px) {
     .nav-links {
         gap: 15px;
