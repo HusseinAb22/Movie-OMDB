@@ -1,0 +1,129 @@
+.admin-wrapper {
+    background-color: var(--dark-color);
+    min-height: 100vh;
+    color: white;
+}
+
+.admin-header {
+    background-color: var(--md-dark-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--c-blue-color);
+}
+
+.admin-content {
+    padding: 2rem;
+}
+
+.stats-container {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Column widths */
+th:nth-child(1), td:nth-child(1) { width: 12%; } /* Username */
+th:nth-child(2), td:nth-child(2) { width: 15%; } /* Movie */
+th:nth-child(3), td:nth-child(3) { width: 15%; } /* Link Name */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* URL */
+th:nth-child(5), td:nth-child(5) { width: 8%; text-align: center; } /* Clicks */
+th:nth-child(6), td:nth-child(6) { width: 8%; } /* Visibility */
+th:nth-child(7), td:nth-child(7) { width: 12%; } /* Created At */
+th:nth-child(8), td:nth-child(8) { width: 10%; } /* Actions */
+
+th {
+    background-color: var(--md-dark-color);
+    color: var(--c-blue-color);
+    font-weight: 600;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.delete-btn:hover {
+    color: #ff0000;
+}
+
+#logout-btn {
+    background: var(--c-blue-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#logout-btn:hover {
+    opacity: 0.8;
+}
+
+.admin-pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.url-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.url-cell a {
+    color: var(--c-blue-color);
+}
+
+.rating-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stars {
+    color: #ffd900;
+    margin-right: 5px;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.has-reviews {
+    font-weight: bold;
+}
+
+.rating-count {
+    font-size: 0.9em;
+    color: #aaaaaa;
+    margin-left: 5px;
+} 

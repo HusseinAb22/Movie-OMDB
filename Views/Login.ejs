@@ -8,10 +8,6 @@
     <style>
         body {
             font-family: 'Roboto', 'Arial', sans-serif;
-            background-image: url("Cinema.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
             color: #343a40;
             margin: 0;
             padding: 0;
@@ -19,10 +15,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            
         }
-
-
 
         .login-container {
             background: #fff;
@@ -32,19 +25,16 @@
             width: 320px;
             text-align: center;
         }
-
         h1 {
             color: #333;
             margin-bottom: 30px;
         }
-
         form label {
             display: block;
             margin-bottom: 10px;
             text-align: left;
             color: #6c757d;
         }
-
         form input {
             width: 100%;
             padding: 12px;
@@ -53,7 +43,6 @@
             border-radius: 4px;
             font-size: 16px;
         }
-
         form button {
             background-color: #007bff;
             color: white;
@@ -69,21 +58,17 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-
         form button:hover {
             background-color: #0056b3;
         }
-
         form p {
             margin-top: 20px;
             font-size: 14px;
         }
-
         form a {
             color: #007bff;
             text-decoration: none;
         }
-
         form a:hover {
             text-decoration: underline;
         }
@@ -93,7 +78,7 @@
     <%- include("./partials/nav.ejs") %>
     <div class="login-container">
         <h1>Login</h1>
-        <form  id="loginForm">
+        <form id="loginForm">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
             <label for="password">Password:</label>
@@ -104,28 +89,43 @@
     </div>
     <script>
         document.getElementById("loginForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
+    event.preventDefault();
+    const formData = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    };
 
-            try {
-                const response = await fetch("/login", {
-                    method: "POST",
-                    body: new URLSearchParams(formData),
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" }
-                });
-
-                const result = await response.json();
-                if (result.success) {
-                    Swal.fire("Success", "Login successful!", "success").then(() => {
-                        window.location.href = "/Client/index.html"; 
-                    });
-                } else {
-                    Swal.fire("Error", result.message, "error");
-                }
-            } catch (error) {
-                Swal.fire("Error", "An unexpected error occurred. Please try again.", "error");
-            }
+    try {
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         });
-    </script>
+
+        const result = await response.json();
+        console.log('Login response:', result);
+
+        if (result.success) {
+            sessionStorage.setItem('userId', result.user._id);
+            sessionStorage.setItem('userName', result.user.firstName);
+            sessionStorage.setItem('isAdmin', result.user.isAdmin);
+            
+            if (result.user.isAdmin === true) {
+                console.log('User is admin, redirecting to admin page...');
+                window.location.href = '/admin.html';
+            } else {
+                window.location.href = '/Client/index.html';
+            }
+        } else {
+            Swal.fire("Error", result.message || "Login failed", "error");
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        Swal.fire("Error", "An unexpected error occurred", "error");
+    }
+});
+    </script>
 </body>
 </html>

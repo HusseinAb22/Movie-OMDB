@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Movie Links</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <header class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div class="user-info">
+                Welcome, <span id="username"></span>
+                <script>
+                    document.getElementById('username').textContent = sessionStorage.getItem('userName');
+                </script>
+            </div>
+            <button id="logout-btn" onclick="handleLogout()">Logout</button>
+        </header>
+        
+        <main class="admin-content">
+            <div class="stats-container">
+                <h2>Most Clicked Links</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Movie</th>
+                            <th>Link Name</th>
+                            <th>URL</th>
+                            <th>Clicks</th>
+                            <th>Visibility</th>
+                            <th>Created At</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="links-data">
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+                <div id="pagination" class="admin-pagination"></div>
+            </div>
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html> 

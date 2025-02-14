@@ -637,6 +637,7 @@ img{
     justify-content: center;
     gap: 8px;
     transition: all 0.3s ease;
+    margin-left: 8.5rem;
     margin-top: 20px;
 }
 
@@ -765,4 +766,432 @@ img{
     .nav-links {
         gap: 15px;
     }
+}
+
+.username-display {
+    color: #fff;
+    margin-right: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.username-display i {
+    color: var(--c-blue-color);
+}
+
+.favorite-status {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.favorite-link {
+    color: var(--c-blue-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.favorite-link:hover {
+    text-decoration: underline;
+}
+
+.movie-poster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.favorite-status-message {
+    text-align: center;
+    margin-top: 10px;
+    padding: 5px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.favorite-status-message p {
+    margin: 0;
+}
+
+.favorite-status-message .favorite-link {
+    color: var(--c-blue-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.favorite-status-message .favorite-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.movie-links-section {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.movie-links-section h3 {
+    color: var(--c-blue-color);
+    margin-bottom: 15px;
+}
+
+.movie-link-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.link-content h4 {
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.link-url a {
+    color: var(--c-blue-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-url a:hover {
+    text-decoration: underline;
+}
+
+.link-description {
+    color: #ffffff;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.link-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-link-btn, .delete-link-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.edit-link-btn:hover {
+    color: var(--c-blue-color);
+}
+
+.delete-link-btn:hover {
+    color: #ff4444;
+}
+.links-section .user-links h4{
+    color: #ffffff;
+}
+.add-link-btn {
+    background: var(--c-blue-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.add-link-btn:hover {
+    background: #0056b3;
+}
+
+.swal2-textarea {
+    width: 100%;
+    min-height: 100px;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.no-links-message {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+}
+
+.no-links-message i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    text-align: center;
+    padding: 20px;
+    color: #ff4444;
+}
+
+.error-message i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.loading-links {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+}
+
+.link-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.rating-section {
+    margin-top: 10px;
+}
+
+.user-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ddd;
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #ffd700;
+}
+
+.rating-label {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.clicks {
+    color: #666;
+    margin-right: 15px;
+}
+
+span.stars {
+    color: #ccc; /* Default grey color for no reviews */
+    transition: color 0.3s ease;
+}
+
+span.stars.has-reviews {
+    color: #ffd700; /* Vibrant gold color when there are reviews */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.pagination button {
+    background: var(--md-dark-color);
+    color: #ffffff;
+    border: 1px solid var(--c-blue-color);
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 40px;
+    font-size: 1rem;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--c-blue-color);
+}
+
+.pagination button.active {
+    background: var(--c-blue-color);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+    color: #fff;
+    margin: 0 5px;
+}
+
+.page-numbers {
+    display: flex;
+    align-items: center;
+}
+
+.links-section {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.links-section h4 {
+    color: var(--c-blue-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.sorting-controls {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sorting-controls select {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: #2c3e50;
+    color: white;
+    border: 1px solid #34495e;
+    cursor: pointer;
+}
+
+.sorting-controls select:hover {
+    background: #34495e;
+}
+
+.sorting-controls label {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Top Links specific styles */
+.top-links-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.top-links-container .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.top-links-container .movie-card {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.top-links-container .movie-card:hover {
+    transform: scale(1.03);
+}
+
+.top-links-container .movie-poster-container {
+    position: relative;
+    padding-top: 150%;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+.top-links-container .movie-poster {
+    position: relative;
+    padding-top: 150%;
+    background: #1a1a1a;
+    overflow: hidden;
+}
+
+.top-links-container .movie-poster img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+}
+
+.top-links-container .movie-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-links-container .movie-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.top-links-container .top-link {
+    margin-top: auto;
+}
+
+.top-links-container .top-link a {
+    color: #00a8e8;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.top-links-container .link-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.sort-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.sort-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sort-btn.active {
+    background: #00a8e8;
 }

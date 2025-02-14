@@ -25,6 +25,12 @@
                     <p id="favorites-link" style="cursor: pointer;">
                         <i class="fas fa-heart"></i> Favorites
                     </p>
+                    <span id="username-display" class="username-display">
+                        <i class="fas fa-user"></i> Welcome, <span id="user-name"></span>
+                    </span>
+                    <a href="/top-links.html" id="top-links">
+                        <i class="fas fa-trophy"></i> Top Links
+                    </a>
                     <a href="logout" id="logout-link" style="cursor: pointer;" class="logout-link">
                         <i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
@@ -36,7 +42,7 @@
             <div class = "search-element">
                 <h3>Search Movie:</h3>
                 <div class="search-input-wrapper">
-                    <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()">
+                    <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box">
                     <button id="search-button" class="search-button">
                         <i class="fas fa-search"></i> Search
                     </button>
@@ -89,6 +95,14 @@
 
 
     <!-- movie app js -->
-    <script src = "index.js"></script>
+    <script type="module" src = "index.js"></script>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        if (success === 'true') {
+            Swal.fire("Success", "Login successful!", "success");
+        }
+    </script>
 </body>
 </html>
